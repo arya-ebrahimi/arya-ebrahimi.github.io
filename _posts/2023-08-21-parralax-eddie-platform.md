@@ -185,7 +185,80 @@ The commands of this part are as follows: (each on a separate terminal)
 	ros2 launch eddiebot_nav nav2.launch.py
     ```
 
+## Analyze Kinematics
+### Encoder reading model
+To determine the speed and direction of travel, a pair of wheel encoders are used. They calculate the number of pulses detected from each wheel. Each wheel encoder consists of two sensors and can measure a distance resolution equal to 1/36th of the circumference of the robot's wheel. According to the sensor, it generates 36 pulses for every full rotation of the wheel. Using this information, the distance covered within a single pulse duration is provided below.
 
+$$
+d = \cfrac{2 \pi r}{36}
+$$
+
+Then the distance traveled by each wheel can be written as follows: 
+
+$$
+	d_R = (s_{(R, t)} - s_{(R, t-1)}) \cdot d
+$$
+
+$$
+    d_L = (s_{(L, t)} - s_{(L, t-1)}) \cdot d
+$$
+
+where $s_{i, t}$ is the encoder tick for wheel $i$ at time $t$.
+
+By using the teleop\_keyboard package, Twist messages are published. These messages are subsequently converted into Simple\_Velocity messages by the eddiebot\_vel\_controller package, containing both the angular and linear velocities of the robot. Considering the usage of a differential drive robot, it becomes necessary to calculate the individual velocities for each wheel. This calculation is performed by the eddie\_controller within the eddiebot\_bringup package. The mathematical intuition underlying this process is as follows:
+
+$$
+	\omega_R = \cfrac{V + \omega \cdot b/2}{r}
+$$
+
+$$
+    \omega_L = \cfrac{V - \omega \cdot b/2}{r}
+$$
+
+where $V$ and $\omega$ are the linear velocity and angular velocity of the robot, and $b$ is the wheel separation.
+
+Since $\omega = \frac{V}{r}$, linear velocities can be derived as follows:
+
+$$
+	V_R = \omega \cdot (R + b/2)
+$$
+
+$$
+	V_L = \omega \cdot (R - b/2)
+$$
+
+where $R = \frac{V}{\omega}$.
+
+To convert velocity from meters per second to position per second, the velocities are divided by $d$.
+
+<p>
+  <img src="/assets/img/eddie/kin1.png" alt="drawing" width="400"/>
+  <em> Differential Drive Kinematics. </em>
+</p>
+
+The odometry model is used to describe the robot’s position and orientation as a function of the movement of its wheels using the information obtained by wheel encoders described in section 6.1. The movement direction is then calculated by the difference in velocities of its two wheels.
+
+- If the linear velocities of the left wheel $V_L$ and the right wheel $V_R$ are the same, the robot travels in a straight line.
+- When $V_L$ and $V_R$ have different values, the robot moves in the direction of the wheel with the lower linear velocity.
+- When $V_L$ and $V_R$ have equal magnitudes but opposite directions, the robot rotates while staying stationary. If the left wheel is moving forward, the robot spins in a clockwise direction, and if the right wheel is moving forward, the robot spins counterclockwise.
+
+Under the assumption that the wheels maintain contact with the ground at all times, without any slipping, they follow curved paths on the plane. These paths are designed in a manner that ensures the vehicle consistently rotates around a specific point known as the instantaneous center of rotation (ICR).
+
+$$
+	d = R \Delta \varphi 
+$$
+
+$$	d_r = (R + b/2) \Delta \varphi $$
+
+$$	d_l = (R - b/2) \Delta \varphi $$
+
+$$	\Delta \varphi = \cfrac{d_r - d_l}{b} $$
+	
+$$  d  = \cfrac{d_r + d_l}{2} $$
+
+where $d_l$ and $d_r$ are the distances traveled by the left and right wheels. In general, $d_r$ and $d_l$ are calculated using the information gathered by wheel encoders, and formulas described in second and third formulas. Thus, the change in the orientation of the robot is calculated by the low-level information of the wheel encoders.
+
+To calculate the current position, the next step involves finding the derivatives of the position. This can be achieved by determining the changes in the x and y directions using the following formulas:
 
 <object data="/assets/img/eddie/main.pdf" type="application/pdf" width="850px" height="850px">
     <embed src="/assets/img/eddie/main.pdf">
