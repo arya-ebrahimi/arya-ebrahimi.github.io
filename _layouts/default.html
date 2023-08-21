@@ -17,13 +17,6 @@ data-mode="{{ site.theme_mode }}"
 
 <!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="{{ site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Register.StartupHook('TeX Jax Ready', function () {
-      MathJax.InputJax.TeX.prefilterHooks.Add(function (data) {
-        data.math = data.math.replace(/^% <!\[CDATA\[/, '').replace(/%\]\]>$/, '');
-      });
-    });
-    </script>
 
 {% include head.html %}
 

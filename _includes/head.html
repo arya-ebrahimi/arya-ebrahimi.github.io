@@ -9,14 +9,6 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Register.StartupHook('TeX Jax Ready', function () {
-      MathJax.InputJax.TeX.prefilterHooks.Add(function (data) {
-        data.math = data.math.replace(/^% <!\[CDATA\[/, '').replace(/%\]\]>$/, '');
-      });
-    });
-  </script>
-
   {% capture seo_tags %}
   {% seo title=false %}
   {% endcapture %}
