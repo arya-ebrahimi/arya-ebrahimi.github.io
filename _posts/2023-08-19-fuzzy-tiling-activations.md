@@ -29,6 +29,13 @@ This approach encodes sparsity in the meta-learner's objective and loss function
 Before introducing FTA, let's learn about a simpler version called Tiling Activation, which is the binning mechanism of FTA without smoothing.
 This Tiling Activation takes a scalar $z$ as input and outputs a binned vector with a value of 1 in bin corresponding to $z$ and zeros elsewhere, which is somewhat similar to one-hot encoding.
 
+<p>
+  <img src="/assets/img/fta/fta1.png" alt="drawing" width="512"/>
+  <em> Tiling activation output for \(k=4\)</em>
+</p>
+
+
+
 
 
 ## References
