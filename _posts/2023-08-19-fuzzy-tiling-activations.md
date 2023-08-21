@@ -29,6 +29,7 @@ This Tiling Activation takes a scalar $z$ as input and outputs a binned vector w
 
 
 In this example, the number of bins, defined as $k$, is set to 4. We passed numbers between 0 and 1 to the Tiling activation function, and as shown in this figure, for each value of $z$, the corresponding activation will be triggered.
+
 ‌
 $$
 \begin{cases}
