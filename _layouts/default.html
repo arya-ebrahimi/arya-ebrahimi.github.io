@@ -23,6 +23,14 @@ data-mode="{{ site.theme_mode }}"
 <body>
   {% include sidebar.html lang=lang %}
 
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Register.StartupHook('TeX Jax Ready', function () {
+      MathJax.InputJax.TeX.prefilterHooks.Add(function (data) {
+        data.math = data.math.replace(/^% <!\[CDATA\[/, '').replace(/%\]\]>$/, '');
+      });
+    });
+  </script>
+
   <div id="main-wrapper" class="d-flex justify-content-center">
     <div id="main" class="container px-xxl-5">
       {% include topbar.html lang=lang %}
