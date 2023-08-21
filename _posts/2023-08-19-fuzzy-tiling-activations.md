@@ -29,16 +29,14 @@ This Tiling Activation takes a scalar $z$ as input and outputs a binned vector w
 
 
 In this example, the number of bins, defined as $k$, is set to 4. We passed numbers between 0 and 1 to the Tiling activation function, and as shown in this figure, for each value of $z$, the corresponding activation will be triggered.
-
 $$
-\begin{pmatrix}
+\begin{cases}
   0.00 \leq z < 0.25 &&& \text{bins}=\begin{bmatrix} 1&0&0&0 \end{bmatrix}\\
   0.25 \leq z < 0.50 &&& \text{bins}=\begin{bmatrix} 0&1&0&0 \end{bmatrix}\\
   0.50 \leq z < 0.75 &&& \text{bins}=\begin{bmatrix} 0&0&1&0 \end{bmatrix}\\
   0.75 \leq z < 1.00 &&& \text{bins}=\begin{bmatrix} 0&0&0&1 \end{bmatrix}\\
-\end{pmatrix}
+\end{cases}
 $$
-
 Although Tiling Activation successfully generates sparse outputs, it has zero derivatives almost everywhere. This fact motivates the design of a smoother version called Fuzzy Tiling Activations.
 
 ## Fuzzy Tiling Activations
