@@ -3,13 +3,15 @@ layout: post
 title: "Parallax Eddie Platform with ROS2"
 author: arya
 categories: [Robotics]
-tags: [mobile-robot, slam]
+tags: [mobile-robot, slam, ros2]
 image: /assets/img/eddie/obot.png
 math: true
 ---
 ----
 ## Abstract
 In this article, we provide a comprehensive report on how to get started with the Parallax Eddie robot platform with ROS2, and we discuss the problems we encountered during our study.
+
+The package is available [here](https://github.com/arashsm79/eddiebot-ros)
 
 ## Setting up the Kinect
 In this section, we will begin by explaining how to utilize the Kinect sensor in ROS2. To start, you need to install the [kinect_ros2](https://github.com/fadlio/kinect_ros2) package, which offers RGB-D topics for ROS2. This package requires the installation of [libfreenect](https://github.com/OpenKinect/libfreenect), which is a userspace driver specifically designed for the Microsoft Kinect sensor.
