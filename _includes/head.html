@@ -83,6 +83,11 @@
   <link rel="stylesheet" href="{{ site.data.origin[type].magnific-popup.css | relative_url }}">
   {% endif %}
 
+  {% if page.layout == 'cv' %}
+  <link href="/assets/css/{{ site.cv }}-screen.css" type="text/css" rel="stylesheet" media="screen">
+  <link href="/assets/css/{{ site.cv }}-print.css" type="text/css" rel="stylesheet" media="print">
+  {% endif %}
+
   <!-- JavaScript -->
 
   {% unless site.theme_mode %}
