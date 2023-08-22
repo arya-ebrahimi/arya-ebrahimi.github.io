@@ -1,5 +1,4 @@
 ---
-layout: cv
 icon: fas fa-file
 order: 5
 title: CV
