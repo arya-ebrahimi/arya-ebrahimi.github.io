@@ -1,4 +1,10 @@
-<!doctype html>
+
+{% include lang.html %}
+
+{% assign df_strftime_m = site.data.locales[lang].df.archives.strftime | default: '/ %m' %}
+{% assign df_dayjs_m = site.data.locales[lang].df.archives.dayjs | default: '/ MM' %}
+
+
 <html>
 <head>
   <meta charset=utf-8 />
