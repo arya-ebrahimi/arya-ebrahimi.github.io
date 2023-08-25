@@ -271,7 +271,16 @@ $$ \Delta y = d \sin(\varphi) $$
 Where $d$ is specified in equation(12). Thus, the new position can be calculated using the following update rule:
 ‌
 
-
+‌
+$$ 
+	\hat{p} = \begin{bmatrix}
+	x\\y\\\varphi
+	\end{bmatrix} + \begin{bmatrix}
+		\Delta x\\
+		\Delta y \\
+		\Delta \varphi
+	\end{bmatrix}
+$$
 
 In the case of a differential drive system, the robot's angular and linear velocities are provided, which are used to drive individual velocities for each wheel. The motion equations used to calculate these velocities are analogous to the equations mentioned earlier. Therefore, the motion equations can be written as follows: 
 
