@@ -58,7 +58,7 @@ FTA uses the same mechanism for binning as Tiling Activation. However, rather th
 
 As can be observed in these figures, a larger $\eta$ leads to a broader range of ReLU-like values on both sides of the flat region.
 
-If you wish to change these values and better understand FTA, start by cloning the original PyTorch implementation of FTA from [this repository](https://github.com/hwang-ua/fta_pytorch_implementation/tree/main) or use the version I modified for GPU usage from [here](https://github.com/Arya-Ebrahimi/rl-playground/blob/main/Deep-Q-Learning/fta.py). After that you can generate the plots I illustrated above by using the following code:
+If you wish to change these values and better understand FTA, start by cloning the original PyTorch implementation of FTA from [this repository](https://github.com/hwang-ua/fta_pytorch_implementation/tree/main) or use the version I modified for GPU usage from [here](https://github.com/arya-ebrahimi/rl-playground/blob/main/Deep-Q-Learning/fta.py). After that you can generate the plots I illustrated above by using the following code:
 
 ```python
 import torch
@@ -98,7 +98,7 @@ I have tested the FTA activation function in two settings: one with a simple DQN
   <img src="/assets/img/fta/taxi.gif" alt="animation" width="500"/>
 </p>
 
-The code for this test is available in [this](https://github.com/Arya-Ebrahimi/rl-playground/tree/main/Deep-Q-Learning) repository. The results are as follows:
+The code for this test is available in [this](https://github.com/arya-ebrahimi/rl-playground/tree/main/Deep-Q-Learning) repository. The results are as follows:
 
 <p>
   <img src="/assets/img/fta/fta_taxi.png" alt="drawing" width="512"/>
@@ -119,7 +119,7 @@ As illustrated in the two figures above, FTA has achieved more stable, efficient
   <em> FTA output for k=2, and \(\eta=0.2\)</em>
 </p>
 
-In my final bachelor project, I tried to rebuild the work introduced in [[5]](#5), so I implemented a similar environment to theirs and a DQN agent with Polyak updates, along with some auxiliary tasks. The repository is available [here](https://github.com/Arya-Ebrahimi/investigate-representations-drl). In a part of my experiments, I compared the usages of ReLU and FTA, as depicted in the following figure: (Note that the plots are averaged over 5 different runs and they are more accurate than the Taxi environment)
+In my final bachelor project, I tried to rebuild the work introduced in [[5]](#5), so I implemented a similar environment to theirs and a DQN agent with Polyak updates, along with some auxiliary tasks. The repository is available [here](https://github.com/arya-ebrahimi/investigate-representations-drl). In a part of my experiments, I compared the usages of ReLU and FTA, as depicted in the following figure: (Note that the plots are averaged over 5 different runs and they are more accurate than the Taxi environment)
 
 <p>
   <img src="/assets/img/fta/relu-fta-comparison.png" alt="drawing" width="600"/>
