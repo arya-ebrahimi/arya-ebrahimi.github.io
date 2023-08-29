@@ -56,6 +56,26 @@ or page.layout == 'tag'
 
   {% if page.math %}
   <!-- MathJax -->
+  
+  <script>
+    /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
+    MathJax = {
+      tex: {
+        /* start/end delimiter pairs for in-line math */
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)']
+        ],
+        /* start/end delimiter pairs for display math */
+        displayMath: [
+          ['$$', '$$'],
+          ['\\[', '\\]']
+        ]
+      }
+    };
+  </script>
+
+
   <script>
     MathJax = {
       startup: {
@@ -79,23 +99,6 @@ or page.layout == 'tag'
             data.math.math = data.math.math.replace(/^% <!\[CDATA\[/, '').replace(/%\]\]>$/, '');
           });
         }
-      }
-    };
-  </script>
-  <script>
-    /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
-    MathJax = {
-      tex: {
-        /* start/end delimiter pairs for in-line math */
-        inlineMath: [
-          ['$', '$'],
-          ['\\(', '\\)']
-        ],
-        /* start/end delimiter pairs for display math */
-        displayMath: [
-          ['$$', '$$'],
-          ['\\[', '\\]']
-        ]
       }
     };
   </script>
