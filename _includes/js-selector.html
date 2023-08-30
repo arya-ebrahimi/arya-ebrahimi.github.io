@@ -56,32 +56,7 @@ or page.layout == 'tag'
 
   {% if page.math %}
   <!-- MathJax -->
-  <script>
-    MathJax = {
-      startup: {
-        ready: function () {
-          var HTMLDomStrings = MathJax._.handlers.html.HTMLDomStrings.HTMLDomStrings;
-          var handleTag = HTMLDomStrings.prototype.handleTag;
-          HTMLDomStrings.prototype.handleTag = function (node, ignore) {
-            if (this.adaptor.kind(node) === '#comment') {
-              var text = this.adaptor.textContent(node);
-              if (text.match(/^\[CDATA\[(?:\n|.)*\]\]$/)) {
-                this.string += '<!'
-                this.extendString(node, text);
-                this.string += '>';
-                return this.adaptor.next(node);
-              }
-            }
-            return handleTag.call(this, node, ignore);
-          }
-          MathJax.startup.defaultReady();
-          MathJax.startup.document.inputJax[0].preFilters.add(function (data) {
-            data.math.math = data.math.math.replace(/^% <!\[CDATA\[/, '').replace(/%\]\]>$/, '');
-          });
-        }
-      }
-    };
-  </script>
+
   <script>
     /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
     MathJax = {
