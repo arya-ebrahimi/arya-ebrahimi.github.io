@@ -271,6 +271,7 @@ $$ \Delta y = d \sin(\varphi) $$
 Where $d$ is specified in equation(12). Thus, the new position can be calculated using the following update rule:
 ‌
 
+‌
 $$ 
 	\hat{p} = \begin{bmatrix}
 	x\\y\\\varphi
