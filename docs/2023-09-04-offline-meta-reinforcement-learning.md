@@ -72,7 +72,7 @@ $$
 $$
 
 
-Where $\mathcal{D}_i = \{ s_{i, t}, a_{i, t}, s'_{i, t}, r_{i, t} \}$ represents the collected trajectories from a policy, $\mathcal{R}_{\mathcal{D}_i}(s, a)$ represents the Monte Carlo return for choosing action a in state s, $V_{\phi}(s)$ represents the learned value function, beta is a temperature value, and $\mathcal{R}_{\mathcal{D}_i}(s, a) - V_{\phi}(s)$ represents the advantage.
+Where $$ \mathcal{D}_i=\{ s_{i, t}, a_{i, t}, s'_{i, t},r_{i, t} \}$$ represents the collected trajectories from a policy, $$ \mathcal{R}_{\mathcal{D}_i}(s, a) $$ represents the Monte Carlo return for choosing action a in state s, $V_{\phi}(s)$ represents the learned value function, beta is a temperature value, and $$ \mathcal{R}_{\mathcal{D}_i}(s, a) - V_{\phi}(s) $$ represents the advantage.
 
 In this approach, the value function is first updated using the Monte Carlo return, and subsequently, this learned value function is used in the policy update using $\mathcal{L}_{AWR}$.
 
@@ -125,7 +125,7 @@ $$
 $$
 
 #### Latent Dynamics Mixture
-Latent Dynamics Mixture (LDM) [[9]](#9) combines offline trajectories to generate new trajectories, and comprises two separate networks. Similar to the previous approach, it includes an encoder $q_{\phi_p}$ that takes trajectories as input and produces a context on which the policy network is conditioned. The second network is the Latent Dynamics Network, which is composed of an encoder $q_{\phi_v}$ and two decoders $p_{\theta_R}$ and $p_{\theta_T}$. The encoder functions similarly to the encoder in the policy network, outputting the latent distribution $m_t \sim q_{\phi_v}(m|\tau_t)$ , while the decoders are conditioned on this latent information. During training, $n$ workers generate various latents $m_t^i \sim q_{\phi_v}(m|\tau_t^i)$ from different tasks. The weighted sum of these latents creates a new latent representation $\hat{m}_t$ . The reward decoder $p_{\theta_R}$ then utilizes this new latent representation to predict the corresponding reward $\hat{r}_t$. Finally, the policy leverages these new $\hat{m}_t$ and $\hat{r}_t$ values, which represent imaginary tasks, for further meta-training.
+Latent Dynamics Mixture (LDM) [[9]](#9) combines offline trajectories to generate new trajectories, and comprises two separate networks. Similar to the previous approach, it includes an encoder $q_{\phi_p}$ that takes trajectories as input and produces a context on which the policy network is conditioned. The second network is the Latent Dynamics Network, which is composed of an encoder $q_{\phi_v}$ and two decoders $p_{\theta_R}$ and $p_{\theta_T}$. The encoder functions similarly to the encoder in the policy network, outputting the latent distribution $m_t \sim q_{\phi_v}(m|\tau_t)$ , while the decoders are conditioned on this latent information. During training, $n$ workers generate various latents $m_t^i \sim q_{\phi_v}(m|\tau_t^i)$ from different tasks. The weighted sum of these latents creates a new latent representation $$ \hat{m}_t $$. The reward decoder $p_{\theta_R}$ then utilizes this new latent representation to predict the corresponding reward $\hat{r}_t$. Finally, the policy leverages these new $\hat{m}_t$ and $\hat{r}_t$ values, which represent imaginary tasks, for further meta-training.
 
 <p>
   <img src="/assets/img/offmetarl/3.png" alt="drawing" width="800"/>
@@ -140,7 +140,7 @@ The goal of context-based approaches is to learn a representation for tasks. We 
   <em> Image derived from [[10]](#10). CORRO general approach. </em>
 </p>
 
-One of these methods is CORRO [[10]](#10), which initially employs an encoder named the Transition Encoder, differing from previously encountered encoders. Instead of taking the entire trajectory as input, it processes one transition at a time and produces its context $\mathbf{z}_i = E_{\phi_1}(s_{i, t}, a_{i, t},  s'_{i, t}, r_{i, t})$. Upon generating the context for all the transitions within a trajectory, another encoder known as the Aggregator combines them into a single context $\mathbf{z} = E_{\phi_2}(\{ \mathbf{z}_i \}_{i=1}^{\tau})$. The transition encoder employs a contrastive loss to maximize mutual information for improved task representation, which its objective is defined as:
+One of these methods is CORRO [[10]](#10), which initially employs an encoder named the Transition Encoder, differing from previously encountered encoders. Instead of taking the entire trajectory as input, it processes one transition at a time and produces its context $$ \mathbf{z}_i = E_{\phi_1}(s_{i, t}, a_{i, t},  s'_{i, t}, r_{i, t}) $$. Upon generating the context for all the transitions within a trajectory, another encoder known as the Aggregator combines them into a single context $$ \mathbf{z} = E_{\phi_2}(\{ \mathbf{z}_i \}_{i=1}^{\tau}) $$. The transition encoder employs a contrastive loss to maximize mutual information for improved task representation, which its objective is defined as:
 
 $$
 \begin{equation}
@@ -152,7 +152,7 @@ $$
 \end{equation}
 $$
 
-Where $\mathcal{M}$ is the set of training tasks, $x$ and $x'$ (positive pairs) represent two transitions sampled from the same task distribution, and $\mathbf{z}$ and $\mathbf{z'}$ are the outputs of the transition encoder for these transitions. Moreover, $x^*$ is sampled from a different set of data, indicating that $x$ and $x^*$ are negative pairs.
+Where $\mathcal{M}$ is the set of training tasks, $x$ and $x'$ (positive pairs) represent two transitions sampled from the same task distribution, and $\mathbf{z}$ and $\mathbf{z'}$ are the outputs of the transition encoder for these transitions. Moreover, $$ x^* $$ is sampled from a different set of data, indicating that $x$ and $x^*$ are negative pairs.
 
 Another method that utilizes contrastive learning is DOMINO [[11]](#11), which, instead of learning a single context, learns multiple decoupled contexts.
 
