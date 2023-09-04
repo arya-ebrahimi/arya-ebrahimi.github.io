@@ -4,7 +4,7 @@ title: "Offline Meta-Reinforcement Learning"
 author: arya
 categories: [Reinforcement Learning]
 tags: [rl, meta-learning]
-image: /assets/img/oddmetarl/omrl.png
+image: /assets/img/offmetarl/omrl.png
 math: true
 ---
 
