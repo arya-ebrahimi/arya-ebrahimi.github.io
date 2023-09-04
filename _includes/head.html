@@ -9,32 +9,36 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 
-    <script>
-      MathJax = {
-        startup: {
-          ready: function () {
-            var HTMLDomStrings = MathJax._.handlers.html.HTMLDomStrings.HTMLDomStrings;
-            var handleTag = HTMLDomStrings.prototype.handleTag;
-            HTMLDomStrings.prototype.handleTag = function (node, ignore) {
-              if (this.adaptor.kind(node) === '#comment') {
-                var text = this.adaptor.textContent(node);
-                if (text.match(/^\[CDATA\[(?:\n|.)*\]\]$/)) {
-                  this.string += '<!'
-                  this.extendString(node, text);
-                  this.string += '>';
-                  return this.adaptor.next(node);
-                }
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <script>
+    MathJax = {
+      startup: {
+        ready: function () {
+          var HTMLDomStrings = MathJax._.handlers.html.HTMLDomStrings.HTMLDomStrings;
+          var handleTag = HTMLDomStrings.prototype.handleTag;
+          HTMLDomStrings.prototype.handleTag = function (node, ignore) {
+            if (this.adaptor.kind(node) === '#comment') {
+              var text = this.adaptor.textContent(node);
+              if (text.match(/^\[CDATA\[(?:\n|.)*\]\]$/)) {
+                this.string += '<!'
+                this.extendString(node, text);
+                this.string += '>';
+                return this.adaptor.next(node);
               }
-              return handleTag.call(this, node, ignore);
             }
-            MathJax.startup.defaultReady();
-            MathJax.startup.document.inputJax[0].preFilters.add(function (data) {
-              data.math.math = data.math.math.replace(/^% <!\[CDATA\[/, '').replace(/%\]\]>$/, '');
-            });
+            return handleTag.call(this, node, ignore);
           }
+          MathJax.startup.defaultReady();
+          MathJax.startup.document.inputJax[0].preFilters.add(function (data) {
+            data.math.math = data.math.math.replace(/^% <!\[CDATA\[/, '').replace(/%\]\]>$/, '');
+          });
         }
-      };
-    </script>
+      }
+    };
+  </script>
 
   {% capture seo_tags %}
   {% seo title=false %}
@@ -101,7 +105,7 @@
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/slideshow.css' | relative_url }}">
-  
+
   {% if site.toc and page.toc %}
   <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
   {% endif %}
