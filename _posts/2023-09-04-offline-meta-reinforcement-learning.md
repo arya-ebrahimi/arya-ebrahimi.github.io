@@ -4,7 +4,7 @@ title: "Offline Meta-Reinforcement Learning"
 author: arya
 categories: [Reinforcement Learning]
 tags: [rl, meta-learning]
-image: /assets/img/eddie/obot.png
+image: /assets/img/oddmetarl/omrl.png
 math: true
 ---
 
@@ -183,7 +183,7 @@ Y. Mu et al., “Decomposed mutual information optimization for generalized cont
 
 The pdf of the report is also available:
 <object data="/assets/img/offmetarl/main.pdf" type="application/pdf" width="850px" height="850px">
-    <embed src="/assets/img/eddie/main.pdf">
+    <embed src="/assets/img/offmetarl/main.pdf">
         <p>This browser does not support PDFs.</p>
     </embed>
 </object>
