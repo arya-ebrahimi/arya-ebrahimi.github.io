@@ -7,7 +7,6 @@ tags: [mobile-robot, slam, ros2]
 image: /assets/img/eddie/obot.png
 math: true
 ---
-----
 ## Abstract
 In this article, we provide a comprehensive report on how to get started with the Parallax Eddie robot platform with ROS2, and we discuss the problems we encountered during our study.
 

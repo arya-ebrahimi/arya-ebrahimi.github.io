@@ -7,7 +7,6 @@ tags: [fta, rl]
 image: /assets/img/fta/FTA.png
 math: true
 ---
-----
 ## Introduction
 
 In the realm of artificial intelligence and machine learning, the pursuit of developing intelligent systems that can adapt and learn from new information resembles the human capacity for continuous learning. However, a challenge known as catastrophic interference [[1]](#1) emerges as a critical hurdle on this path. Catastrophic interference occurs when the integration of new information disrupts or erases previously learned knowledge. Understanding and mitigating catastrophic interference is an essential pursuit, as it holds the key to creating resilient, lifelong learning systems that can flexibly acquire and retain knowledge across diverse tasks. 
