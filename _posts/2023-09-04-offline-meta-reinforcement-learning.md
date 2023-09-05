@@ -184,6 +184,7 @@ Y. Mu et al., “Decomposed mutual information optimization for generalized cont
 The pdf of the report is also available:
 <object data="/assets/img/offmetarl/main.pdf" type="application/pdf" width="850px" height="850px">
     <embed src="/assets/img/offmetarl/main.pdf">
-        <p>This browser does not support PDFs.</p>
-    </embed>
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://arya-ebrahimi.github.io/assets/img/offmetarl/main.pdf">Download PDF</a>.
+        </p>    
+	</embed>
 </object>
