@@ -8,7 +8,7 @@ image: /assets/img/eddie/obot.png
 math: true
 ---
 
-This post is also available on my [colleague’s blog]().
+This post is also available on my [colleague’s blog](https://sara-ghavampour.github.io/robotics/2023/09/06/parralax-eddie-platform.html).
 
 
 ## Abstract
