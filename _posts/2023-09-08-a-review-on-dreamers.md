@@ -8,6 +8,9 @@ image: /assets/img/dreamers/thumb.png
 math: true
 ---
 
+This post is also available on my [colleague’s blog](https://sara-ghavampour.github.io/reinforcement/learning/2023/09/08/a-review-on-dreamers.html).
+
+
 ## Abstract
 In recent years, reinforcement learning has witnessed substantial progress in domains such as robotics and Atari game-playing. However, RL algorithms face challenges in terms of sample efficiency and exploration in complex and high-dimensional environments. Model-Based Reinforcement Learning represents a promising approach to address these challenges and enhance the efficiency and performance of RL algorithms.
 

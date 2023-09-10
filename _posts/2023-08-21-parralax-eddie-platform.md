@@ -7,10 +7,14 @@ tags: [mobile-robot, slam, ros2]
 image: /assets/img/eddie/obot.png
 math: true
 ---
+
+This post is also available on my [colleague’s blog]().
+
+
 ## Abstract
 In this article, we provide a comprehensive report on how to get started with the Parallax Eddie robot platform with ROS2, and we discuss the problems we encountered during our study.
 
-The package is available [here](https://github.com/arashsm79/eddiebot-ros)
+The package is available [here](https://github.com/arashsm79/eddiebot-ros).
 
 ## Setting up the Kinect
 In this section, we will begin by explaining how to utilize the Kinect sensor in ROS2. To start, you need to install the [kinect_ros2](https://github.com/fadlio/kinect_ros2) package, which offers RGB-D topics for ROS2. This package requires the installation of [libfreenect](https://github.com/OpenKinect/libfreenect), which is a userspace driver specifically designed for the Microsoft Kinect sensor.
@@ -36,7 +40,7 @@ ros2 run kinect_ros2 kinect_ros2_node
 
 <p>
   <img src="/assets/img/eddie/problem2.png" alt="drawing" width="800"/>
-  <em> The result of the image\_raw and depth/image\_raw topics shown in rviz2. </em>
+  <em> The result of the image_raw and depth/image_raw topics shown in rviz2. </em>
 </p>
 
 ## Add timestamp to RGB images
@@ -76,7 +80,7 @@ void KinectRosComponent::timer_callback()
 <p>
   <img src="/assets/img/eddie/before_time.png" alt="drawing" width="600"/>
   <img src="/assets/img/eddie/after_time.png" alt="drawing" width="600"/>
-  <em> image\_raw topic before and after of setting the timestamps. </em>
+  <em> image_raw topic before and after of setting the timestamps. </em>
 </p>
 
 ## Bringup the Robot
@@ -93,7 +97,7 @@ sudo chmod a+rw /dev/ttyUSB0
 ```
 
 ### eddiebot-bringup package
-This package facilitates the conversion of higher-level instructions, provided via ROS2 topics, into lower-level instructions specifically designed for the eddiebot. The file eddie\_controller.cpp subscribes to the eddie/simple\_velocity topic, which contains both the linear and angular velocity information for the robot. Given that the eddiebot operates as a differential-drive system, it necessitates separate linear and angular velocities for each of its wheels. Therefore, the approach outlined in section 6 is implemented to generate distinct velocities for each wheel.
+This package facilitates the conversion of higher-level instructions, provided via ROS2 topics, into lower-level instructions specifically designed for the eddiebot. The file eddie_controller.cpp subscribes to the eddie/simple_velocity topic, which contains both the linear and angular velocity information for the robot. Given that the eddiebot operates as a differential-drive system, it necessitates separate linear and angular velocities for each of its wheels. Therefore, the approach outlined in section 6 is implemented to generate distinct velocities for each wheel.
 
 <p>
   <img src="/assets/img/eddie/3.png" alt="drawing" width="600"/>
@@ -306,7 +310,7 @@ If the use\_rtabmap\_viz parameter is set to true in the RTAB-Map launch configu
 
 <p>
   <img src="/assets/img/eddie/rtab.png" alt="drawing" width="700"/>
-  <em> set use\_rtabmap\_viz true. </em>
+  <em> set use_rtabmap_viz true. </em>
 </p>
 
 After creating the map using RTAB-Map, you can load it and proceed with navigation tasks similar to those described in Section 5. To accomplish this, run following commands in separate terminals:
