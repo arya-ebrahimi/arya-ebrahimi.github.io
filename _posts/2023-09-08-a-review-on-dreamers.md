@@ -112,6 +112,61 @@ Other changes have been implemented in DreamerV2, but the two mentioned above ar
   <em> Image from [4], World model learning in DreamerV2. </em>
 </p>
 
+## DreamerV3
+Similar to Dreamer1 and Dreamer2, Dreamer3 [[5]](#5) also utilizes an RSSM to learn a model of the environment, which is further used by an actor-critic agent to learn a policy using imaginary trajectories. DreamerV3 is an improved version of DreamerV2 with several enhancements, the most important of which are described in the following subsections.
+
+### Symlog Predictions
+To learn robustly across multiple domains, DreamerV3 learns a neural network that regresses onto the symlog (symmetric log) function defined as follows:
+
+$$
+\text{symlog}_{x} = \text{sign}(x) \ln(|x| + 1)
+$$
+
+
+<p>
+  <img src="/assets/img/dreamers/6.png" alt="drawing" width="800"/>
+  <em> Image from [5], The symlog function compared to log and identity. </em>
+</p>
+
+As can be seen in above, the symlog function compresses the magnitudes of both large positive and negative values, and unlike the logarithm, it is symmetric around the origin while preserving the input sign. DreamerV3 uses symlog predictions in the decoder, the reward predictor, and the critic, allowing this approach to robustly and quickly learn across a diverse range of environments.
+
+<p>
+  <img src="/assets/img/dreamers/7.png" alt="drawing" width="800"/>
+  <em> Image from [5], Training process of DreamerV3. </em>
+</p>
+
+### KL Regularizer
+
+In DreamerV3, the world model parameters $\phi$ are optimized to minimize the following loss function:
+
+$$
+\mathcal{L} = \beta_{pred} \mathcal{L}_{pred} + \beta_{dyn} \mathcal{L}_{dyn} + \beta_{rep} \mathcal{L}_{rep}
+$$
+
+where $$ \beta_{pred} = 1 $$, $$ \beta_{dyn} = 0.5 $$ and $$ \beta_{rep} = 0.1 $$.
+
+The prediction loss trains the decoder and reward predictor using the symlog loss. However, the dynamic and representation losses have been slightly modified from DreamerV2. A maximum term is added to the losses to prevent further learning when they are already minimized, directing the world model's focus towards its prediction loss.
+
+
+$$
+\mathcal{L}_{dyn} = \max (1, KL [sg(p(s_t | s_{t-1}, a_{t-1}, o_t)) || q(s_t|s_{t-1}, a_{t-1})])
+$$
+
+$$
+\mathcal{L}_{rep} = \max (1,  KL [p(s_t | s_{t-1}, a_{t-1}, o_t) || sg(q(s_t|s_{t-1}, a_{t-1}))])
+$$
+
+### Critic Learning
+
+A simple choice for the critic loss function would be to regress the $$ \lambda $$-returns via squared error or symlog predictions. However, the critic predicts the expected value of a potentially widespread return distribution, which can slow down learning. DreamerV3 utilizes a discrete regression approach for learning the critic based on twohot encoded targets. Twohot encoding is a generalization of one-hot encoding where all the bins are zero except the two closest to the input number. The sum of these bins should be zero, and more weight is given to the bin which is closest to the input number.
+
+<p>
+  <img src="/assets/img/dreamers/8.png" alt="drawing" width="800"/>
+  <em> Image from [5], task performance over environment
+	steps for different training ratios and model sizes. The training ratio is the ratio of replayed steps to environment steps. It can be seen that higher training ratios result in substantially improved data-efficiency, and larger
+	models achieve not only higher final performance but also higher data-efficiency. </em>
+</p>
+
 ## References
 <a name="1">[1]</a>  F.-M. Luo, T. Xu, H. Lai, X.-H. Chen, W. Zhang, and Y. Yu, “A survey on model-based reinforcement learning,” arXiv preprint arXiv:2206.09328, 2022.
 
