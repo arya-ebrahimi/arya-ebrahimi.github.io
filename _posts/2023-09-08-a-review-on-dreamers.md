@@ -176,6 +176,9 @@ A simple choice for the critic loss function would be to regress the $$ \lambda 
 
 <a name="4">[4]</a> D. Hafner, T. Lillicrap, M. Norouzi, and J. Ba, “Mastering atari with discrete world models,” arXiv preprint arXiv:2010.02193, 2020.
 
+<a name="5">[5]</a> D. Hafner, J. Pasukonis, J. Ba, and T. Lillicrap, “Mastering diverse domains through world models,” arXiv preprint arXiv:2301.04104, 2023.
+
+
 
 The pdf of the report is also available:
 <object data="/assets/img/dreamers/main.pdf" type="application/pdf" width="850px" height="850px">
