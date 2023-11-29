@@ -65,7 +65,7 @@ OptiDICE [[7]](#7) is an offline RL algorithm that eliminates the need to evalua
 
 Additionally, if artificial agents are to be effective in the real world, they will need to thrive in environments populated by other agents. Humans can observe the behavior of other humans and combine the obtained observation with their experiences to quickly learn how to achieve their own goals. This objective is also desirable in continual agents to learn from other agents or even human demonstrations.
 
-To this end, $\Psi \Phi$-learning [[2]](#2) formalizes and addresses a problem setting in which an agent has access to offline observations and actions drawn from the experiences of other agents interacting with the same environment. However, it has no access to the rewards or goals of these agents, and their objectives and levels of expertise may vary widely, which is also common in real-world settings. To learn the shared features of the environment, $\Psi \Phi$-learning utilizes the successor features framework to capture the environment's dynamic, which is further used to accelerate the reinforcement learning phase.
+To this end, $$ \Psi \Phi $$-learning [[2]](#2) formalizes and addresses a problem setting in which an agent has access to offline observations and actions drawn from the experiences of other agents interacting with the same environment. However, it has no access to the rewards or goals of these agents, and their objectives and levels of expertise may vary widely, which is also common in real-world settings. To learn the shared features of the environment, $$ \Psi \Phi $$-learning utilizes the successor features framework to capture the environment's dynamic, which is further used to accelerate the reinforcement learning phase.
 
 ### No Reset!
 
