@@ -1,7 +1,7 @@
 ---
 title:          "A Contrastive NILM Approach for Appliance Detection"
 date:           2023-10-25 00:01:00 +0800
-selected:       false
+selected:       true
 pub:            "7th International Conference on Internet of Things and Applications (IoT)"
 pub_date:       "2023"
 abstract: >-
