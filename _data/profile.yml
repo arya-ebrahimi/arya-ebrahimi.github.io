@@ -3,8 +3,8 @@ secondary_name: ""
 navbar_name: "Arya Ebrahimi"
 
 positions:
-- logo: /assets/images/badges/UoA.png  # Logo is optional
-  name: Master's student at the University of Alberta
+# - logo: /assets/images/badges/UoA.png  # Logo is optional
+  # name: Master's student at the University of Alberta
 # - name: Position 2 without logo
 
 
