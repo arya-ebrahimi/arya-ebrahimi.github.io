@@ -9,7 +9,7 @@ positions:
 
 
 email: "arya.ebrahimi@ualberta.ca"
-# cv_link: link-to-your-cv-file
+cv_link: /files/cv.pdf
 gscholar: 765AeWcAAAAJ  # This is an example, replace it with your own Google Scholar ID
 github: arya-ebrahimi
 # twitter: your_twitter_id  # Do not include the '@' symbol
@@ -22,7 +22,8 @@ linkedin: ary4
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I am going to start my graduate studies as a Master's student at the <a href="https://www.ualberta.ca/en/index.html" target="_blank">University of Alberta</a>.  
+    I am a Master's student at the <a href="https://www.ualberta.ca/en/index.html" target="_blank">University of Alberta</a> 
+    under the supervision of <a href="https://www.ece.ualberta.ca/~jjin5/index.html" target="_blank">Dr. Jun Jin</a>.  
     My research interests lie at the intersection of robotics and machine learning, particularly I am interested 
     in developing embodied continual learners. My current focus is on finding better ways 
     for machines/robots to represent their interactions with the environment, enhancing their learning process.  
