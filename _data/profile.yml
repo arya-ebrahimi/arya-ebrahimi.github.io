@@ -22,11 +22,7 @@ linkedin: ary4
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I am a Master's student at the <a href="https://www.ualberta.ca/en/index.html" target="_blank">University of Alberta</a> 
-    under the supervision of <a href="https://www.ece.ualberta.ca/~jjin5/index.html" target="_blank">Dr. Jun Jin</a>.  
-    My research interests lie at the intersection of robotics and machine learning, particularly I am interested 
-    in developing embodied continual learners. My current focus is on finding better ways 
-    for machines/robots to represent their interactions with the environment, enhancing their learning process.  
+    I am a Master's student at the University of Alberta, supervised by <a href="https://www.ece.ualberta.ca/~jjin5/index.html" target="_blank">Dr. Jun Jin</a>. I work at the intersection of robotics and machine learning, with a focus on continual reinforcement learning. My goal is to build robots that keep learning throughout their lifetime, using the broad priors of foundation models as a starting point and reinforcement learning to keep improving from their own experience.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
@@ -38,7 +34,7 @@ education:
   logo: /assets/images/badges/UoA.png
   position: >- 
     Department of Electrical and Computer Engineering <br/>
-    M.Sc. Student
+    M.Sc. in Computer Engineering
   date: May. 2025 - present
 - name: Ferdowsi University of Mashhad
   logo: /assets/images/badges/FUM.png

@@ -67,3 +67,15 @@ div.lazy {
     font-family: Courier, monospace;
 }
 
+
+.abstract-text.clamped {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+.abstract-toggle {
+    cursor: pointer;
+}

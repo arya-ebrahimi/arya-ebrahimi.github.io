@@ -25,6 +25,27 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip()
 
+    // clamp long abstracts and add a read more / show less toggle
+    $('.abstract-text').each(function () {
+        var $abs = $(this).addClass('clamped');
+        var $toggle = $('<a class="small abstract-toggle">Read more</a>');
+        $toggle.on('click', function () {
+            var expanded = !$abs.toggleClass('clamped').hasClass('clamped');
+            $toggle.text(expanded ? 'Show less' : 'Read more');
+            $grid.masonry('layout');
+        });
+        $abs.after($toggle);
+    });
+
+    // only show the toggle when the clamped abstract actually overflows
+    function updateAbstractToggles() {
+        $('.abstract-text.clamped:visible').each(function () {
+            $(this).next('.abstract-toggle').toggle(this.scrollHeight > this.clientHeight + 1);
+        });
+    }
+    updateAbstractToggles();
+    $(window).on('resize', updateAbstractToggles);
+
     var $grid = $('.grid').masonry({
         "percentPosition": true,
         "itemSelector": ".grid-item",
